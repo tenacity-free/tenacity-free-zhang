@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="tenacity-free-zhang-report-web:war">
+    <output-path>$PROJECT_DIR$/../tenacity-free-zhang-report-web/target</output-path>
+    <root id="archive" name="tenacity-free-zhang-report-web.war">
+      <element id="artifact" artifact-name="tenacity-free-zhang-report-web:war exploded" />
+    </root>
+  </artifact>
+</component>

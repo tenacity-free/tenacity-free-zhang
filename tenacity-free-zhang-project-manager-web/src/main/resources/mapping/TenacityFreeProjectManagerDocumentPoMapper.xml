@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tenacity.free.project.manager.mapper.TenacityFreeProjectManagerDocumentPoMapper" >
+  <resultMap id="BaseResultMap" type="com.tenacity.free.project.manager.po.TenacityFreeProjectManagerDocumentPo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="project_id" property="projectId" jdbcType="INTEGER" />
+    <result column="group_id" property="groupId" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="star_level" property="starLevel" jdbcType="TINYINT" />
+    <result column="request_url" property="requestUrl" jdbcType="VARCHAR" />
+    <result column="request_method" property="requestMethod" jdbcType="VARCHAR" />
+    <result column="response_datatype_id" property="responseDatatypeId" jdbcType="INTEGER" />
+    <result column="success_resp_type" property="successRespType" jdbcType="VARCHAR" />
+    <result column="fail_resp_type" property="failRespType" jdbcType="VARCHAR" />
+    <result column="add_time" property="addTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.tenacity.free.project.manager.po.TenacityFreeProjectManagerDocumentPoWithBLOBs" extends="BaseResultMap" >
+    <result column="request_headers" property="requestHeaders" jdbcType="LONGVARCHAR" />
+    <result column="query_params" property="queryParams" jdbcType="LONGVARCHAR" />
+    <result column="response_params" property="responseParams" jdbcType="LONGVARCHAR" />
+    <result column="success_resp_example" property="successRespExample" jdbcType="LONGVARCHAR" />
+    <result column="fail_resp_example" property="failRespExample" jdbcType="LONGVARCHAR" />
+    <result column="remark" property="remark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, project_id, group_id, name, status, star_level, request_url, request_method, 
+    response_datatype_id, success_resp_type, fail_resp_type, add_time, update_time
+  </sql>
+  <sql id="Blob_Column_List" >
+    request_headers, query_params, response_params, success_resp_example, fail_resp_example, 
+    remark
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.tenacity.free.project.manager.po.example.TenacityFreeProjectManagerDocumentPoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tenacity_free_project_manager_document
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tenacity.free.project.manager.po.example.TenacityFreeProjectManagerDocumentPoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tenacity_free_project_manager_document
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tenacity_free_project_manager_document
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tenacity_free_project_manager_document
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.tenacity.free.project.manager.po.example.TenacityFreeProjectManagerDocumentPoExample" >
+    delete from tenacity_free_project_manager_document
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.tenacity.free.project.manager.po.TenacityFreeProjectManagerDocumentPoWithBLOBs" >
+    insert into tenacity_free_project_manager_document (id, project_id, group_id, 
+      name, status, star_level, 
+      request_url, request_method, response_datatype_id, 
+      success_resp_type, fail_resp_type, add_time, 
+      update_time, request_headers, query_params, 
+      response_params, success_resp_example, 
+      fail_resp_example, remark)
+    values (#{id,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, #{groupId,jdbcType=INTEGER}, 
+      #{name,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{starLevel,jdbcType=TINYINT}, 
+      #{requestUrl,jdbcType=VARCHAR}, #{requestMethod,jdbcType=VARCHAR}, #{responseDatatypeId,jdbcType=INTEGER}, 
+      #{successRespType,jdbcType=VARCHAR}, #{failRespType,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{requestHeaders,jdbcType=LONGVARCHAR}, #{queryParams,jdbcType=LONGVARCHAR}, 
+      #{responseParams,jdbcType=LONGVARCHAR}, #{successRespExample,jdbcType=LONGVARCHAR}, 
+      #{failRespExample,jdbcType=LONGVARCHAR}, #{remark,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tenacity.free.project.manager.po.TenacityFreeProjectManagerDocumentPoWithBLOBs" >
+    insert into tenacity_free_project_manager_document
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="groupId != null" >
+        group_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="starLevel != null" >
+        star_level,
+      </if>
+      <if test="requestUrl != null" >
+        request_url,
+      </if>
+      <if test="requestMethod != null" >
+        request_method,
+      </if>
+      <if test="responseDatatypeId != null" >
+        response_datatype_id,
+      </if>
+      <if test="successRespType != null" >
+        success_resp_type,
+      </if>
+      <if test="failRespType != null" >
+        fail_resp_type,
+      </if>
+      <if test="addTime != null" >
+        add_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="requestHeaders != null" >
+        request_headers,
+      </if>
+      <if test="queryParams != null" >
+        query_params,
+      </if>
+      <if test="responseParams != null" >
+        response_params,
+      </if>
+      <if test="successRespExample != null" >
+        success_resp_example,
+      </if>
+      <if test="failRespExample != null" >
+        fail_resp_example,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="groupId != null" >
+        #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="starLevel != null" >
+        #{starLevel,jdbcType=TINYINT},
+      </if>
+      <if test="requestUrl != null" >
+        #{requestUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="requestMethod != null" >
+        #{requestMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="responseDatatypeId != null" >
+        #{responseDatatypeId,jdbcType=INTEGER},
+      </if>
+      <if test="successRespType != null" >
+        #{successRespType,jdbcType=VARCHAR},
+      </if>
+      <if test="failRespType != null" >
+        #{failRespType,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="requestHeaders != null" >
+        #{requestHeaders,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="queryParams != null" >
+        #{queryParams,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="responseParams != null" >
+        #{responseParams,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="successRespExample != null" >
+        #{successRespExample,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="failRespExample != null" >
+        #{failRespExample,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.tenacity.free.project.manager.po.example.TenacityFreeProjectManagerDocumentPoExample" resultType="java.lang.Integer" >
+    select count(*) from tenacity_free_project_manager_document
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tenacity_free_project_manager_document
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.projectId != null" >
+        project_id = #{record.projectId,jdbcType=INTEGER},
+      </if>
+      <if test="record.groupId != null" >
+        group_id = #{record.groupId,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=TINYINT},
+      </if>
+      <if test="record.starLevel != null" >
+        star_level = #{record.starLevel,jdbcType=TINYINT},
+      </if>
+      <if test="record.requestUrl != null" >
+        request_url = #{record.requestUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.requestMethod != null" >
+        request_method = #{record.requestMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="record.responseDatatypeId != null" >
+        response_datatype_id = #{record.responseDatatypeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.successRespType != null" >
+        success_resp_type = #{record.successRespType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.failRespType != null" >
+        fail_resp_type = #{record.failRespType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addTime != null" >
+        add_time = #{record.addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.requestHeaders != null" >
+        request_headers = #{record.requestHeaders,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.queryParams != null" >
+        query_params = #{record.queryParams,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.responseParams != null" >
+        response_params = #{record.responseParams,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.successRespExample != null" >
+        success_resp_example = #{record.successRespExample,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.failRespExample != null" >
+        fail_resp_example = #{record.failRespExample,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update tenacity_free_project_manager_document
+    set id = #{record.id,jdbcType=INTEGER},
+      project_id = #{record.projectId,jdbcType=INTEGER},
+      group_id = #{record.groupId,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=TINYINT},
+      star_level = #{record.starLevel,jdbcType=TINYINT},
+      request_url = #{record.requestUrl,jdbcType=VARCHAR},
+      request_method = #{record.requestMethod,jdbcType=VARCHAR},
+      response_datatype_id = #{record.responseDatatypeId,jdbcType=INTEGER},
+      success_resp_type = #{record.successRespType,jdbcType=VARCHAR},
+      fail_resp_type = #{record.failRespType,jdbcType=VARCHAR},
+      add_time = #{record.addTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      request_headers = #{record.requestHeaders,jdbcType=LONGVARCHAR},
+      query_params = #{record.queryParams,jdbcType=LONGVARCHAR},
+      response_params = #{record.responseParams,jdbcType=LONGVARCHAR},
+      success_resp_example = #{record.successRespExample,jdbcType=LONGVARCHAR},
+      fail_resp_example = #{record.failRespExample,jdbcType=LONGVARCHAR},
+      remark = #{record.remark,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tenacity_free_project_manager_document
+    set id = #{record.id,jdbcType=INTEGER},
+      project_id = #{record.projectId,jdbcType=INTEGER},
+      group_id = #{record.groupId,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=TINYINT},
+      star_level = #{record.starLevel,jdbcType=TINYINT},
+      request_url = #{record.requestUrl,jdbcType=VARCHAR},
+      request_method = #{record.requestMethod,jdbcType=VARCHAR},
+      response_datatype_id = #{record.responseDatatypeId,jdbcType=INTEGER},
+      success_resp_type = #{record.successRespType,jdbcType=VARCHAR},
+      fail_resp_type = #{record.failRespType,jdbcType=VARCHAR},
+      add_time = #{record.addTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tenacity.free.project.manager.po.TenacityFreeProjectManagerDocumentPoWithBLOBs" >
+    update tenacity_free_project_manager_document
+    <set >
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="groupId != null" >
+        group_id = #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="starLevel != null" >
+        star_level = #{starLevel,jdbcType=TINYINT},
+      </if>
+      <if test="requestUrl != null" >
+        request_url = #{requestUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="requestMethod != null" >
+        request_method = #{requestMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="responseDatatypeId != null" >
+        response_datatype_id = #{responseDatatypeId,jdbcType=INTEGER},
+      </if>
+      <if test="successRespType != null" >
+        success_resp_type = #{successRespType,jdbcType=VARCHAR},
+      </if>
+      <if test="failRespType != null" >
+        fail_resp_type = #{failRespType,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="requestHeaders != null" >
+        request_headers = #{requestHeaders,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="queryParams != null" >
+        query_params = #{queryParams,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="responseParams != null" >
+        response_params = #{responseParams,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="successRespExample != null" >
+        success_resp_example = #{successRespExample,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="failRespExample != null" >
+        fail_resp_example = #{failRespExample,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.tenacity.free.project.manager.po.TenacityFreeProjectManagerDocumentPoWithBLOBs" >
+    update tenacity_free_project_manager_document
+    set project_id = #{projectId,jdbcType=INTEGER},
+      group_id = #{groupId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      star_level = #{starLevel,jdbcType=TINYINT},
+      request_url = #{requestUrl,jdbcType=VARCHAR},
+      request_method = #{requestMethod,jdbcType=VARCHAR},
+      response_datatype_id = #{responseDatatypeId,jdbcType=INTEGER},
+      success_resp_type = #{successRespType,jdbcType=VARCHAR},
+      fail_resp_type = #{failRespType,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      request_headers = #{requestHeaders,jdbcType=LONGVARCHAR},
+      query_params = #{queryParams,jdbcType=LONGVARCHAR},
+      response_params = #{responseParams,jdbcType=LONGVARCHAR},
+      success_resp_example = #{successRespExample,jdbcType=LONGVARCHAR},
+      fail_resp_example = #{failRespExample,jdbcType=LONGVARCHAR},
+      remark = #{remark,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tenacity.free.project.manager.po.TenacityFreeProjectManagerDocumentPo" >
+    update tenacity_free_project_manager_document
+    set project_id = #{projectId,jdbcType=INTEGER},
+      group_id = #{groupId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      star_level = #{starLevel,jdbcType=TINYINT},
+      request_url = #{requestUrl,jdbcType=VARCHAR},
+      request_method = #{requestMethod,jdbcType=VARCHAR},
+      response_datatype_id = #{responseDatatypeId,jdbcType=INTEGER},
+      success_resp_type = #{successRespType,jdbcType=VARCHAR},
+      fail_resp_type = #{failRespType,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

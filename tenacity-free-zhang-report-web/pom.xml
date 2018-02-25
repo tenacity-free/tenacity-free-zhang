@@ -1,0 +1,22 @@
+<project
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <artifactId>tenacity-free-zhang</artifactId>
+        <groupId>com.tenacity.free.zhang</groupId>
+        <version>1.0</version>
+        <relativePath>../tenacity-free-zhang/pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>tenacity-free-zhang-report-web</artifactId>
+    <packaging>war</packaging>
+    <name>tenacity-free-zhang-report-web Maven Webapp</name>
+    <url>http://maven.apache.org</url>
+    <dependencies>
+
+    </dependencies>
+    <build>
+        <finalName>tenacity-free-zhang-report-web</finalName>
+    </build>
+</project>
