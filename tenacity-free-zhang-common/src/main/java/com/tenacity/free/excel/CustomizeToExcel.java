@@ -3,8 +3,8 @@ package com.tenacity.free.excel;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-import com.tenacity.free.common.util.RandomUtils;
 
+import com.tenacity.free.util.RandomUtils;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;

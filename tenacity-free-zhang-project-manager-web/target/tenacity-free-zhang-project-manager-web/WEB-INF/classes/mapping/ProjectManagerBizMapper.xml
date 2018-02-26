@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tenacity.free.project.manager.mapper.ProjectManagerBizMapper">
+	
+	<resultMap id="XxlApiBiz" type="com.tenacity.free.project.manager.po.ProjectManagerApiBiz" >
+		<result column="id" property="id" />
+		<result column="biz_name" property="bizName" />
+	    <result column="order" property="order" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		t.id,
+		t.biz_name,
+		t.order
+	</sql>
+
+	<insert id="add" parameterType="com.tenacity.free.project.manager.po.ProjectManagerApiBiz" useGeneratedKeys="true" keyProperty="id" >
+		INSERT INTO tenacity_free_project_manager_biz (
+			`biz_name`,
+			`order`
+		) VALUES (
+			#{bizName},
+			#{order}
+		);
+	</insert>
+
+	<update id="update" parameterType="com.tenacity.free.project.manager.po.ProjectManagerApiBiz" >
+		UPDATE tenacity_free_project_manager_biz
+		SET
+			`biz_name` = #{bizName},
+			`order` = #{order}
+		WHERE id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Integer" >
+		DELETE FROM tenacity_free_project_manager_biz
+		WHERE id = #{id}
+	</delete>
+
+	<select id="loadAll" parameterType="java.lang.Integer" resultMap="XxlApiBiz">
+		SELECT <include refid="Base_Column_List" />
+		FROM tenacity_free_project_manager_biz AS t
+		ORDER BY t.order ASC
+	</select>
+
+</mapper>

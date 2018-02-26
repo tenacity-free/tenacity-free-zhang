@@ -1,10 +1,11 @@
 package com.tenacity.free.project.manager.util;
 
-import com.tenacity.free.project.manager.po.TenacityFreeProjectManagerDataTypeFiledsPo;
-import com.tenacity.free.project.manager.po.TenacityFreeProjectManagerDataTypePo;
+import com.tenacity.free.project.manager.po.ProjectManagerDataType;
+import com.tenacity.free.project.manager.po.ProjectManagerDataTypeField;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang.time.FastDateFormat;
 
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -19,48 +20,13 @@ import java.util.Set;
  */
 public class ProjectManagerDataTypeToCode {
 
-   /* public static void main(String[] args) {
-
-        // base data-type
-        TenacityFreeProjectManagerDataTypePo StringType = new TenacityFreeProjectManagerDataTypePo();
-        StringType.setName("String");
-        StringType.setAbout("字符串类型");
-
-        // field
-        List<TenacityFreeProjectManagerDataTypeFiledsPo> fieldList = new ArrayList<TenacityFreeProjectManagerDataTypeFiledsPo>();
-
-        TenacityFreeProjectManagerDataTypeFiledsPo field1 = new TenacityFreeProjectManagerDataTypeFiledsPo();
-        field1.setFieldName("name");
-        field1.setFieldAbout("姓名");
-        field1.setFieldType(0);
-        field1.setFieldDatatype(StringType);
-        fieldList.add(field1);
-
-        XxlApiDataTypeField field2 = new XxlApiDataTypeField();
-        field2.setFieldName("otherNames");
-        field2.setFieldAbout("其他别名");
-        field2.setFieldType(1);
-        field2.setFieldDatatype(StringType);
-        fieldList.add(field2);
-
-        // dto
-        XxlApiDataType apiDataTypeDTO = new XxlApiDataType();
-        apiDataTypeDTO.setName("User");
-        apiDataTypeDTO.setAbout("用户信息");
-        apiDataTypeDTO.setFieldList(fieldList);
-
-        String content = parseDataTypeToCode(apiDataTypeDTO);
-        System.out.println(content);
-
-    }*/
-
     /**
      * 根据DataType生成代码
      *
      * @param apiDataTypeDTO
      * @return
      */
-    public static String parseDataTypeToCode(TenacityFreeProjectManagerDataTypePo apiDataTypeDTO) {
+    public static String parseDataTypeToCode(ProjectManagerDataType apiDataTypeDTO) {
         StringBuffer sb = new StringBuffer();
 
         // package
@@ -70,7 +36,7 @@ public class ProjectManagerDataTypeToCode {
         // import
         Set<String> importSet = new HashSet<String>();
         if (CollectionUtils.isNotEmpty(apiDataTypeDTO.getFieldList())) {
-            for (TenacityFreeProjectManagerDataTypeFiledsPo field: apiDataTypeDTO.getFieldList()) {
+            for (ProjectManagerDataTypeField field: apiDataTypeDTO.getFieldList()) {
                 String fieldTypeImportItem = field.getFieldDatatype().getName();
 
                 if (fieldTypeImportItem!=null && fieldTypeImportItem.equalsIgnoreCase("date")) {
@@ -100,7 +66,7 @@ public class ProjectManagerDataTypeToCode {
 
         // field
         if (CollectionUtils.isNotEmpty(apiDataTypeDTO.getFieldList())) {
-            for (TenacityFreeProjectManagerDataTypeFiledsPo field: apiDataTypeDTO.getFieldList()) {
+            for (ProjectManagerDataTypeField field: apiDataTypeDTO.getFieldList()) {
                 String fieldTypeItem = matchJavaType(field.getFieldDatatype().getName());
                 String fieldNameItem = field.getFieldName();
                 if (field.getFieldType() == 1) {
@@ -114,7 +80,7 @@ public class ProjectManagerDataTypeToCode {
 
         // get set
         if (CollectionUtils.isNotEmpty(apiDataTypeDTO.getFieldList())) {
-            for (TenacityFreeProjectManagerDataTypeFiledsPo field: apiDataTypeDTO.getFieldList()) {
+            for (ProjectManagerDataTypeField field: apiDataTypeDTO.getFieldList()) {
                 String fieldTypeItem = matchJavaType(field.getFieldDatatype().getName());
                 String fieldNameItem = field.getFieldName();
                 String fieldNameItemUpFirst = upFirst(field.getFieldName());
