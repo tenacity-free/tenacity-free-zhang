@@ -11,6 +11,9 @@
 	<!-- <context:property-placeholder location="classpath:config.properties,classpath:redis.properties,classpath:mongodb.properties" />-->
 	<context:property-placeholder location="classpath:config/config.properties" />
 
+	<!-- 自动扫描dao和service包(自动注入) -->
+	<context:component-scan base-package="com.tenacity.free.project.manager.dao,com.tenacity.free.project.manager.service" />
+
 	<bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
 		<property name="templateLoaderPath" value="/WEB-INF/template/" />
 		<property name="freemarkerSettings">
@@ -19,9 +22,8 @@
 			</bean>
 		</property>
 	</bean>
+
 	
-	
-	<!-- 自动扫描dao和service包(自动注入) -->
-	<context:component-scan base-package="com.tenacity.free.project.manager.dao,com.tenacity.free.project.manager.service" />
+
 
 </beans>

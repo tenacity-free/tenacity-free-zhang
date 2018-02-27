@@ -26,7 +26,7 @@ import java.util.UUID;
 public class ProjectManagerMockController {
 	private static Logger logger = LoggerFactory.getLogger(ProjectManagerMockController.class);
 
-	@Resource(mappedName = "projectManagerMockDao")
+	@Resource(name = "projectManagerMockDao")
 	private ProjectManagerMockDao projectManagerMockDao;
 	@Resource(name = "projectManagerDocumentDao")
 	private ProjectManagerDocumentDao projectManagerDocumentDao;
