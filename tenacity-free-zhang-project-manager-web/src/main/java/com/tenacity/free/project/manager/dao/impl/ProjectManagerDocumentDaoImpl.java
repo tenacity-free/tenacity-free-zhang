@@ -6,7 +6,9 @@ import com.tenacity.free.project.manager.po.ProjectManagerDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author free.zhang
@@ -44,7 +46,10 @@ public class ProjectManagerDocumentDaoImpl implements ProjectManagerDocumentDao 
 
     @Override
     public List<ProjectManagerDocument> loadAll(int productId, int groupId) {
-        return projectManagerDocumentMapper.loadAll(productId,groupId);
+        Map<String,Object> paramMap = new HashMap<>(2);
+        paramMap.put("productId",productId);
+        paramMap.put("groupId",groupId);
+        return projectManagerDocumentMapper.loadAll(paramMap);
     }
 
     @Override

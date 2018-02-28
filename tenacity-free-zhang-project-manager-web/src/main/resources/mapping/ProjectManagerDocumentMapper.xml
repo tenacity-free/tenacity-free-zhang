@@ -3,7 +3,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tenacity.free.project.manager.mapper.ProjectManagerDocumentMapper">
 	
-	<resultMap id="XxlApiDocument" type="com.tenacity.free.project.manager.po.ProjectManagerDocument" >
+	<resultMap id="projectManagerDocumentMap" type="com.tenacity.free.project.manager.po.ProjectManagerDocument" >
 		<result column="id" property="id" />
 		<result column="project_id" property="projectId" />
 		<result column="group_id" property="groupId" />
@@ -117,14 +117,14 @@
 		WHERE id = #{id}
 	</delete>
 
-	<select id="load" parameterType="java.lang.Integer" resultMap="XxlApiDocument">
+	<select id="load" parameterType="java.lang.Integer" resultMap="projectManagerDocumentMap">
 		SELECT <include refid="Base_Column_List" />
 		FROM tenacity_free_project_manager_document AS t
 		WHERE t.id = #{id}
 	</select>
 
 
-	<select id="loadAll" parameterType="java.util.Map" resultMap="XxlApiDocument">
+	<select id="loadAll" parameterType="java.util.Map" resultMap="projectManagerDocumentMap">
 		SELECT <include refid="Base_Column_List" />
 		FROM tenacity_free_project_manager_document AS t
 		WHERE t.project_id = #{productId}
@@ -134,13 +134,13 @@
 		ORDER BY t.star_level DESC, t.add_time DESC
 	</select>
 
-	<select id="loadByGroupId" parameterType="java.lang.Integer" resultMap="XxlApiDocument">
+	<select id="loadByGroupId" parameterType="java.lang.Integer" resultMap="projectManagerDocumentMap">
 		SELECT <include refid="Base_Column_List" />
 		FROM tenacity_free_project_manager_document AS t
 		WHERE t.group_id = #{groupId}
 	</select>
 
-	<select id="findByResponseDataTypeId" parameterType="java.lang.Integer" resultMap="XxlApiDocument">
+	<select id="findByResponseDataTypeId" parameterType="java.lang.Integer" resultMap="projectManagerDocumentMap">
 		SELECT <include refid="Base_Column_List" />
 		FROM tenacity_free_project_manager_document AS t
 		WHERE t.response_datatype_id = #{responseDatatypeId}

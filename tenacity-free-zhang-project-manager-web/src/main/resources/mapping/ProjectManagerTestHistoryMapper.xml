@@ -3,7 +3,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tenacity.free.project.manager.mapper.ProjectManagerTestHistoryMapper">
 	
-	<resultMap id="XxlApiTestHistory" type="com.tenacity.free.project.manager.po.ProjectManagerTestHistory" >
+	<resultMap id="projectManagerTestHistoryMap" type="com.tenacity.free.project.manager.po.ProjectManagerTestHistory" >
 		<result column="id" property="id" />
 		<result column="document_id" property="documentId" />
 		<result column="add_time" property="addTime" />
@@ -67,13 +67,13 @@
 		WHERE id = #{id}
 	</delete>
 
-	<select id="load" parameterType="java.lang.Integer" resultMap="XxlApiTestHistory">
+	<select id="load" parameterType="java.lang.Integer" resultMap="projectManagerTestHistoryMap">
 		SELECT <include refid="Base_Column_List" />
 		FROM tenacity_free_project_manager_test_history AS t
 		WHERE t.id = #{id}
 	</select>
 
-	<select id="loadByDocumentId" parameterType="java.lang.Integer" resultMap="XxlApiTestHistory">
+	<select id="loadByDocumentId" parameterType="java.lang.Integer" resultMap="projectManagerTestHistoryMap">
 		SELECT <include refid="Base_Column_List" />
 		FROM tenacity_free_project_manager_test_history AS t
 		WHERE t.document_id = #{documentId}

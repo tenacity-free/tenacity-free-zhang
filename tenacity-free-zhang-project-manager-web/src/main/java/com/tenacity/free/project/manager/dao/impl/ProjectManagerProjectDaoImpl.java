@@ -6,7 +6,9 @@ import com.tenacity.free.project.manager.po.ProjectManagerProject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author free.zhang
@@ -44,11 +46,21 @@ public class ProjectManagerProjectDaoImpl implements ProjectManagerProjectDao {
 
     @Override
     public List<ProjectManagerProject> pageList(int offset, int pagesize, String name, int bizId) {
-        return projectManagerProjectMapper.pageList(offset,pagesize,name,bizId);
+        Map<String,Object> paramMap = new HashMap<>(4);
+        paramMap.put("offset",offset);
+        paramMap.put("pagesize",pagesize);
+        paramMap.put("name",name);
+        paramMap.put("bizId",bizId);
+        return projectManagerProjectMapper.pageList(paramMap);
     }
 
     @Override
     public int pageListCount(int offset, int pagesize, String name, int bizId) {
-        return projectManagerProjectMapper.pageListCount(offset,pagesize,name,bizId);
+        Map<String,Object> paramMap = new HashMap<>(4);
+        paramMap.put("offset",offset);
+        paramMap.put("pagesize",pagesize);
+        paramMap.put("name",name);
+        paramMap.put("bizId",bizId);
+        return projectManagerProjectMapper.pageListCount(paramMap);
     }
 }

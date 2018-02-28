@@ -2,6 +2,7 @@ package com.tenacity.free.project.manager.service;
 
 import com.tenacity.free.project.manager.po.ProjectManagerUser;
 import com.tenacity.free.project.manager.po.ReturnT;
+import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,5 +22,15 @@ public interface ProjectManagerUserService {
     ReturnT<String> logout(HttpServletRequest request, HttpServletResponse response);
 
     ProjectManagerUser ifLogin(HttpServletRequest request);
+
+    String index(Model model, HttpServletRequest request);
+
+    ReturnT<String> add(ProjectManagerUser projectManagerUser);
+
+    ReturnT<String> update(ProjectManagerUser projectManagerUser);
+
+    ReturnT<String> delete(HttpServletRequest request, int id);
+
+
 
 }

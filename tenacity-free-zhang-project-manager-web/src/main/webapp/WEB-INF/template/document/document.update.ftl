@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   	<title>API管理平台</title>
     <link rel="shortcut icon" href="${request.contextPath}/favicon.ico" type="image/x-icon" />
   	<#import "/common/common.macro.ftl" as netCommon>

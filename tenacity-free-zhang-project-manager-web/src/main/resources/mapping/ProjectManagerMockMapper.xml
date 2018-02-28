@@ -3,7 +3,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tenacity.free.project.manager.mapper.ProjectManagerMockMapper">
 
-	<resultMap id="XxlApiMock" type="com.tenacity.free.project.manager.po.ProjectManagerMock" >
+	<resultMap id="projectManagerMockMap" type="com.tenacity.free.project.manager.po.ProjectManagerMock" >
 		<result column="id" property="id" />
 		<result column="document_id" property="documentId" />
 		<result column="uuid" property="uuid" />
@@ -46,20 +46,20 @@
 		WHERE id = #{id}
 	</delete>
 
-	<select id="loadAll" parameterType="java.lang.Integer" resultMap="XxlApiMock">
+	<select id="loadAll" parameterType="java.lang.Integer" resultMap="projectManagerMockMap">
 		SELECT <include refid="Base_Column_List" />
 		FROM tenacity_free_project_manager_mock AS t
 		WHERE t.document_id = #{documentId}
 		ORDER BY t.id DESC
 	</select>
 
-	<select id="load" parameterType="java.lang.Integer" resultMap="XxlApiMock">
+	<select id="load" parameterType="java.lang.Integer" resultMap="projectManagerMockMap">
 		SELECT <include refid="Base_Column_List" />
 		FROM tenacity_free_project_manager_mock AS t
 		WHERE t.id = #{id}
 	</select>
 
-	<select id="loadByUuid" parameterType="java.lang.String" resultMap="XxlApiMock">
+	<select id="loadByUuid" parameterType="java.lang.String" resultMap="projectManagerMockMap">
 		SELECT <include refid="Base_Column_List" />
 		FROM tenacity_free_project_manager_mock AS t
 		WHERE t.uuid = #{uuid}

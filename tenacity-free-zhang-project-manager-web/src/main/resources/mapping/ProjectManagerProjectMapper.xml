@@ -3,7 +3,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tenacity.free.project.manager.mapper.ProjectManagerProjectMapper">
 	
-	<resultMap id="XxlApiProject" type="com.tenacity.free.project.manager.po.ProjectManagerProject" >
+	<resultMap id="projectManagerProjectMap" type="com.tenacity.free.project.manager.po.ProjectManagerProject" >
 		<result column="id" property="id" />
 		<result column="name" property="name" />
 	    <result column="desc" property="desc" />
@@ -63,14 +63,14 @@
 		WHERE id = #{id}
 	</delete>
 
-	<select id="load" parameterType="java.lang.Integer" resultMap="XxlApiProject">
+	<select id="load" parameterType="java.lang.Integer" resultMap="projectManagerProjectMap">
 		SELECT <include refid="Base_Column_List" />
 		FROM tenacity_free_project_manager_project AS t
 		WHERE t.id = #{id}
 	</select>
 
 
-	<select id="pageList" parameterType="java.util.Map" resultMap="XxlApiProject">
+	<select id="pageList" parameterType="java.util.Map" resultMap="projectManagerProjectMap">
 		SELECT <include refid="Base_Column_List" />
 		FROM tenacity_free_project_manager_project AS t
 		<trim prefix="WHERE" prefixOverrides="AND | OR" >

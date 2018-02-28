@@ -3,7 +3,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tenacity.free.project.manager.mapper.ProjectManagerBizMapper">
 	
-	<resultMap id="XxlApiBiz" type="com.tenacity.free.project.manager.po.ProjectManagerApiBiz" >
+	<resultMap id="projectManagerBizMap" type="com.tenacity.free.project.manager.po.ProjectManagerApiBiz" >
 		<result column="id" property="id" />
 		<result column="biz_name" property="bizName" />
 	    <result column="order" property="order" />
@@ -38,7 +38,7 @@
 		WHERE id = #{id}
 	</delete>
 
-	<select id="loadAll" parameterType="java.lang.Integer" resultMap="XxlApiBiz">
+	<select id="loadAll" parameterType="java.lang.Integer" resultMap="projectManagerBizMap">
 		SELECT <include refid="Base_Column_List" />
 		FROM tenacity_free_project_manager_biz AS t
 		ORDER BY t.order ASC

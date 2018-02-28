@@ -9,19 +9,37 @@
 
 	<!-- 引入属性文件 -->
 	<!-- <context:property-placeholder location="classpath:config.properties,classpath:redis.properties,classpath:mongodb.properties" />-->
-	<context:property-placeholder location="classpath:config/config.properties" />
+	<context:property-placeholder location="classpath:config/config.properties,classpath:config/freemarker.properties" />
 
 	<!-- 自动扫描dao和service包(自动注入) -->
 	<context:component-scan base-package="com.tenacity.free.project.manager.dao,com.tenacity.free.project.manager.service" />
 
-	<bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+	<!--<bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
 		<property name="templateLoaderPath" value="/WEB-INF/template/" />
 		<property name="freemarkerSettings">
-			<bean class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+			&lt;!&ndash;<bean class="org.springframework.beans.factory.config.PropertiesFactoryBean">
 				<property name="location" value="classpath:config/freemarker.properties" />
-			</bean>
+			</bean>&ndash;&gt;
+			<props>
+				&lt;!&ndash; 设置页面中文乱码问题 &ndash;&gt;
+				<prop key="default_encoding">UTF-8</prop>&lt;!&ndash;模板的编码格式 &ndash;&gt;
+				<prop key="output_encoding">UTF-8</prop>
+				<prop key="locale">UTF-8</prop>&lt;!&ndash; 本地化设置 &ndash;&gt;
+				<prop key="url_escaping_charset">UTF-8</prop>
+				&lt;!&ndash;  其他配置 &ndash;&gt;
+				<prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
+				<prop key="date_format">yyyy-MM-dd</prop>
+				<prop key="time_format">HH:mm:ss</prop>
+				<prop key="number_format">0.##########</prop>
+				<prop key="boolean_format">true,false</prop>
+				<prop key="whitespace_stripping">true</prop>
+				<prop key="tag_syntax">auto_detect</prop>
+				<prop key="classic_compatible">true</prop>
+				<prop key="template_exception_handler">ignore</prop>
+				<prop key="template_update_delay">0</prop>
+			</props>
 		</property>
-	</bean>
+	</bean>-->
 
 	
 

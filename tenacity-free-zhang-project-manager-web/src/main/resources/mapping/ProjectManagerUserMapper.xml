@@ -3,7 +3,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tenacity.free.project.manager.mapper.ProjectManagerUserMapper">
 	
-	<resultMap id="XxlApiUser" type="com.tenacity.free.project.manager.po.ProjectManagerUser" >
+	<resultMap id="projectManagerUserMap" type="com.tenacity.free.project.manager.po.ProjectManagerUser" >
 		<result column="id" property="id" />
 		<result column="username" property="userName" />
 	    <result column="password" property="password" />
@@ -47,19 +47,19 @@
 		WHERE id = #{id}
 	</delete>
 
-	<select id="findByUserName" parameterType="java.lang.String" resultMap="XxlApiUser">
+	<select id="findByUserName" parameterType="java.lang.String" resultMap="projectManagerUserMap">
 		SELECT <include refid="Base_Column_List" />
 		FROM tenacity_free_project_manager_user AS t
 		WHERE t.userName = #{userName}
 	</select>
 
-	<select id="findById" parameterType="java.lang.Integer" resultMap="XxlApiUser">
+	<select id="findById" parameterType="java.lang.Integer" resultMap="projectManagerUserMap">
 		SELECT <include refid="Base_Column_List" />
 		FROM tenacity_free_project_manager_user AS t
 		WHERE t.id = #{id}
 	</select>
 
-	<select id="loadAll" parameterType="java.lang.Integer" resultMap="XxlApiUser">
+	<select id="loadAll" parameterType="java.lang.Integer" resultMap="projectManagerUserMap">
 		SELECT <include refid="Base_Column_List" />
 		FROM tenacity_free_project_manager_user AS t
 		ORDER BY id DESC

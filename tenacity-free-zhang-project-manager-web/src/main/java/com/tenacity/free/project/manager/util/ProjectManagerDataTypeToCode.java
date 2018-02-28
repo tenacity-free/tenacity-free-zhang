@@ -36,10 +36,10 @@ public class ProjectManagerDataTypeToCode {
         // import
         Set<String> importSet = new HashSet<String>();
         if (CollectionUtils.isNotEmpty(apiDataTypeDTO.getFieldList())) {
-            for (ProjectManagerDataTypeField field: apiDataTypeDTO.getFieldList()) {
+            for (ProjectManagerDataTypeField field : apiDataTypeDTO.getFieldList()) {
                 String fieldTypeImportItem = field.getFieldDatatype().getName();
 
-                if (fieldTypeImportItem!=null && fieldTypeImportItem.equalsIgnoreCase("date")) {
+                if (fieldTypeImportItem != null && fieldTypeImportItem.equalsIgnoreCase("date")) {
                     String importItem = "import java.util.Date;";
                     importSet.add(importItem);
                     sb.append(importItem + "\r\n");
@@ -55,22 +55,22 @@ public class ProjectManagerDataTypeToCode {
 
         // 类注释
         sb.append("/**\r\n");
-        sb.append("*\t" + apiDataTypeDTO.getAbout()+ "\r\n");
+        sb.append("*\t" + apiDataTypeDTO.getAbout() + "\r\n");
         sb.append("*\r\n");
-        sb.append("*\tCreated by ApiHome on "+ FastDateFormat.getInstance("yy/MM/dd").format(new Date()) +".\r\n");
+        sb.append("*\tCreated by ApiHome on " + FastDateFormat.getInstance("yy/MM/dd").format(new Date()) + ".\r\n");
         sb.append("*/ \r\n");
 
         // 实体部分
-        sb.append("public class " + upFirst(apiDataTypeDTO.getName())  + "Response {");
+        sb.append("public class " + upFirst(apiDataTypeDTO.getName()) + "Response {");
         sb.append("\r\n\r\n");
 
         // field
         if (CollectionUtils.isNotEmpty(apiDataTypeDTO.getFieldList())) {
-            for (ProjectManagerDataTypeField field: apiDataTypeDTO.getFieldList()) {
+            for (ProjectManagerDataTypeField field : apiDataTypeDTO.getFieldList()) {
                 String fieldTypeItem = matchJavaType(field.getFieldDatatype().getName());
                 String fieldNameItem = field.getFieldName();
                 if (field.getFieldType() == 1) {
-                    fieldTypeItem = "List<"+ fieldTypeItem +">";
+                    fieldTypeItem = "List<" + fieldTypeItem + ">";
                 }
                 sb.append("\tprivate " + fieldTypeItem + " " + fieldNameItem + ";\r\n");
 
@@ -80,13 +80,13 @@ public class ProjectManagerDataTypeToCode {
 
         // get set
         if (CollectionUtils.isNotEmpty(apiDataTypeDTO.getFieldList())) {
-            for (ProjectManagerDataTypeField field: apiDataTypeDTO.getFieldList()) {
+            for (ProjectManagerDataTypeField field : apiDataTypeDTO.getFieldList()) {
                 String fieldTypeItem = matchJavaType(field.getFieldDatatype().getName());
                 String fieldNameItem = field.getFieldName();
                 String fieldNameItemUpFirst = upFirst(field.getFieldName());
 
                 if (field.getFieldType() == 1) {
-                    fieldTypeItem = "List<"+ fieldTypeItem +">";
+                    fieldTypeItem = "List<" + fieldTypeItem + ">";
                 }
 
                 sb.append("\tpublic void set" + fieldNameItemUpFirst + "(" + fieldTypeItem + " " + fieldNameItem + "){\r\n");
@@ -115,8 +115,8 @@ public class ProjectManagerDataTypeToCode {
     private static String upFirst(String str) {
 
         char[] ch = str.toCharArray();
-        if(ch[0] >= 'a' && ch[0] <= 'z'){
-            ch[0] = (char)(ch[0] - 32);
+        if (ch[0] >= 'a' && ch[0] <= 'z') {
+            ch[0] = (char) (ch[0] - 32);
         }
 
         return new String(ch);
@@ -130,23 +130,23 @@ public class ProjectManagerDataTypeToCode {
      */
     private static String matchJavaType(String paramDataType) {
 
-        if(paramDataType.equalsIgnoreCase("string")){
+        if (paramDataType.equalsIgnoreCase("string")) {
             return "String";
-        } else if(paramDataType.equalsIgnoreCase("boolean")){
+        } else if (paramDataType.equalsIgnoreCase("boolean")) {
             return "boolean";
-        } else if(paramDataType.equalsIgnoreCase("short")){
+        } else if (paramDataType.equalsIgnoreCase("short")) {
             return "short";
-        } else if(paramDataType.equalsIgnoreCase("int")){
+        } else if (paramDataType.equalsIgnoreCase("int")) {
             return "int";
-        } else if(paramDataType.equalsIgnoreCase("long")){
+        } else if (paramDataType.equalsIgnoreCase("long")) {
             return "long";
-        } else if(paramDataType.equalsIgnoreCase("float")){
+        } else if (paramDataType.equalsIgnoreCase("float")) {
             return "float";
-        } else if(paramDataType.equalsIgnoreCase("double")){
+        } else if (paramDataType.equalsIgnoreCase("double")) {
             return "double";
-        } else if(paramDataType.equalsIgnoreCase("date") || paramDataType.equalsIgnoreCase("datetime")) {
+        } else if (paramDataType.equalsIgnoreCase("date") || paramDataType.equalsIgnoreCase("datetime")) {
             return "Date";
-        } else if(paramDataType.equalsIgnoreCase("byte")){
+        } else if (paramDataType.equalsIgnoreCase("byte")) {
             return "byte";
         }
 

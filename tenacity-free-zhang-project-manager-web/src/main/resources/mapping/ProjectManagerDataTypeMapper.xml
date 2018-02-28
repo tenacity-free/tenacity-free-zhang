@@ -3,7 +3,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tenacity.free.project.manager.mapper.ProjectManagerDataTypeMapper">
 	
-	<resultMap id="XxlApiDataType" type="com.tenacity.free.project.manager.po.ProjectManagerDataType" >
+	<resultMap id="projectManagerDataTypeMap" type="com.tenacity.free.project.manager.po.ProjectManagerDataType" >
 		<result column="id" property="id" />
 	    <result column="name" property="name" />
 		<result column="about" property="about" />
@@ -44,13 +44,13 @@
 		WHERE id = #{id}
 	</delete>
 
-	<select id="load" parameterType="java.lang.Integer" resultMap="XxlApiDataType">
+	<select id="load" parameterType="java.lang.Integer" resultMap="projectManagerDataTypeMap">
 		SELECT <include refid="Base_Column_List" />
 		FROM tenacity_free_project_manager_datatype AS t
 		WHERE t.id = #{id}
 	</select>
 
-	<select id="pageList" parameterType="java.util.Map" resultMap="XxlApiDataType">
+	<select id="pageList" parameterType="java.util.Map" resultMap="projectManagerDataTypeMap">
 		SELECT <include refid="Base_Column_List" />
 		FROM tenacity_free_project_manager_datatype AS t
 		<trim prefix="WHERE" prefixOverrides="AND | OR" >
@@ -78,7 +78,7 @@
 		</trim>
 	</select>
 
-	<select id="loadByName" parameterType="java.lang.String" resultMap="XxlApiDataType">
+	<select id="loadByName" parameterType="java.lang.String" resultMap="projectManagerDataTypeMap">
 		SELECT <include refid="Base_Column_List" />
 		FROM tenacity_free_project_manager_datatype AS t
 		WHERE t.name = #{name}

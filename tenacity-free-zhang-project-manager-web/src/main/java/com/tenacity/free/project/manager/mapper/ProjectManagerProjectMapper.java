@@ -3,6 +3,7 @@ package com.tenacity.free.project.manager.mapper;
 import com.tenacity.free.project.manager.po.ProjectManagerProject;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author free.zhang
@@ -22,8 +23,8 @@ public interface ProjectManagerProjectMapper {
 
     ProjectManagerProject load(Integer id);
 
-    List<ProjectManagerProject> pageList(Integer offset, Integer pagesize, String name, Integer bizId);
+    List<ProjectManagerProject> pageList(Map<String,Object> pMap);
 
-    int pageListCount(Integer offset, Integer pagesize, String name, Integer bizId);
+    int pageListCount(Map<String,Object> pMap);
 
 }

@@ -20,13 +20,13 @@ public class CookieUtils {
     private static final String COOKIE_PATH = "/";
 
     /**
-     * @class_name CookieUtils.java
-     * @method set
-     * @description  保存
-     * @author free.zhang
-     * @date 2018/2/25/025 21:34
      * @param '[response, key, value, ifRemember]
      * @return void
+     * @class_name CookieUtils.java
+     * @method set
+     * @description 保存
+     * @author free.zhang
+     * @date 2018/2/25/025 21:34
      */
     public static void set(HttpServletResponse response, String key, String value, boolean ifRemember) {
         int age = COOKIE_MAX_AGE;
@@ -37,37 +37,41 @@ public class CookieUtils {
         }
 
         Cookie cookie = new Cookie(key, value);
-        cookie.setMaxAge(age);				// Cookie过期时间,单位/秒
-        cookie.setPath(COOKIE_PATH);		// Cookie适用的路径
+        // Cookie过期时间,单位/秒
+        cookie.setMaxAge(age);
+        // Cookie适用的路径
+        cookie.setPath(COOKIE_PATH);
         response.addCookie(cookie);
     }
 
     /**
+     * @param '[response, key, value, maxAge, path]
+     * @return void
      * @class_name CookieUtils.java
      * @method set
      * @description 保存
      * @author free.zhang
      * @date 2018/2/25/025 21:34
-     * @param '[response, key, value, maxAge, path]
-     * @return void
      */
     private static void set(HttpServletResponse response,
                             String key, String value, int maxAge, String path) {
 
         Cookie cookie = new Cookie(key, value);
-        cookie.setMaxAge(maxAge);	// Cookie过期时间,单位/秒
-        cookie.setPath(path);		// Cookie适用的路径
+        // Cookie过期时间,单位/秒
+        cookie.setMaxAge(maxAge);
+        // Cookie适用的路径
+        cookie.setPath(path);
         response.addCookie(cookie);
     }
 
     /**
+     * @param '[request, key]
+     * @return java.lang.String
      * @class_name CookieUtils.java
      * @method getValue
      * @description 查询value
      * @author free.zhang
      * @date 2018/2/25/025 21:34
-     * @param '[request, key]
-     * @return java.lang.String
      */
     public static String getValue(HttpServletRequest request, String key) {
         Cookie cookie = get(request, key);
@@ -78,13 +82,13 @@ public class CookieUtils {
     }
 
     /**
+     * @param '[request, key]
+     * @return javax.servlet.http.Cookie
      * @class_name CookieUtils.java
      * @method get
      * @description 查询Cookie
      * @author free.zhang
      * @date 2018/2/25/025 21:35
-     * @param '[request, key]
-     * @return javax.servlet.http.Cookie
      */
     private static Cookie get(HttpServletRequest request, String key) {
         Cookie[] arr_cookie = request.getCookies();
@@ -99,13 +103,13 @@ public class CookieUtils {
     }
 
     /**
-     * @class_name CookieUtils.java
-     * @method remove
-     * @description  删除Cookie
-     * @author free.zhang
-     * @date 2018/2/25/025 21:35
      * @param '[request, response, key]
      * @return void
+     * @class_name CookieUtils.java
+     * @method remove
+     * @description 删除Cookie
+     * @author free.zhang
+     * @date 2018/2/25/025 21:35
      */
     public static void remove(HttpServletRequest request, HttpServletResponse response, String key) {
         Cookie cookie = get(request, key);

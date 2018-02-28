@@ -42,21 +42,21 @@ public class ProjectManagerDataTypeServiceImpl implements ProjectManagerDataType
 
 
     /**
+     * @param '[dataType, maxRelateLevel]
+     * @return com.tenacity.free.project.manager.po.ProjectManagerDataType
      * @class_name ProjectManagerDataTypeServiceImpl
      * @method fillFileDataType
      * @description parse field of datatype (注意，循环引用问题；此处显示最长引用链路长度为5；)
      * @author free.zhang
      * @date 2018/2/26 13:16
-     * @param '[dataType, maxRelateLevel]
-     * @return com.tenacity.free.project.manager.po.ProjectManagerDataType
      */
-    private ProjectManagerDataType fillFileDataType(ProjectManagerDataType dataType, int maxRelateLevel){
+    private ProjectManagerDataType fillFileDataType(ProjectManagerDataType dataType, int maxRelateLevel) {
         // init field list
         List<ProjectManagerDataTypeField> fieldList = projectManagerDataTypeFieldDao.findByParentDatatypeId(dataType.getId());
         dataType.setFieldList(fieldList);
         // parse field list
-        if (CollectionUtils.isNotEmpty(dataType.getFieldList()) && maxRelateLevel>0) {
-            for (ProjectManagerDataTypeField field: dataType.getFieldList()) {
+        if (CollectionUtils.isNotEmpty(dataType.getFieldList()) && maxRelateLevel > 0) {
+            for (ProjectManagerDataTypeField field : dataType.getFieldList()) {
                 ProjectManagerDataType fieldDataType = projectManagerDataTypeDao.load(field.getFieldDatatypeId());
                 fieldDataType = fillFileDataType(fieldDataType, --maxRelateLevel);
                 field.setFieldDatatype(fieldDataType);

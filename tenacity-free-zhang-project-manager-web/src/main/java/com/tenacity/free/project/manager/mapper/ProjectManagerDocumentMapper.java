@@ -3,6 +3,7 @@ package com.tenacity.free.project.manager.mapper;
 import com.tenacity.free.project.manager.po.ProjectManagerDocument;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author free.zhang
@@ -22,7 +23,7 @@ public interface ProjectManagerDocumentMapper {
 
     ProjectManagerDocument load(Integer id);
 
-    List<ProjectManagerDocument> loadAll(Integer productId, Integer groupId);
+    List<ProjectManagerDocument> loadAll(Map<String,Object> pMap);
 
     List<ProjectManagerDocument> loadByGroupId(Integer groupId);
 
