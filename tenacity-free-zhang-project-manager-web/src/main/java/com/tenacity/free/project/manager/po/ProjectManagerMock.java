@@ -1,6 +1,8 @@
 package com.tenacity.free.project.manager.po;
 
-public class ProjectManagerMock {
+import com.tenacity.free.object.BaseObject;
+
+public class ProjectManagerMock extends BaseObject {
 
     private int id;
     // 接口ID

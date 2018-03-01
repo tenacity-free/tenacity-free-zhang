@@ -1,15 +1,25 @@
 package com.tenacity.free.project.manager.po;
 
-public class ProjectManagerProject {
+import com.tenacity.free.object.BaseObject;
 
-    private int id;                 // 项目ID
-    private String name;            // 项目名称
-    private String desc;            // 项目描述
-    private int permission;         // 访问权限：0-公开、1-私有
-    private String baseUrlProduct;  // 跟地址：线上环境
-    private String baseUrlPpe;      // 跟地址：预发布环境
-    private String baseUrlQa;       // 跟地址：测试环境
-    private int bizId;              // 业务线ID
+public class ProjectManagerProject extends BaseObject {
+
+    // 项目ID
+    private int id;
+    // 项目名称
+    private String name;
+    // 项目描述
+    private String desc;
+    // 访问权限：0-公开、1-私有
+    private int permission;
+    // 跟地址：线上环境
+    private String baseUrlProduct;
+    // 跟地址：预发布环境
+    private String baseUrlPpe;
+    // 跟地址：测试环境
+    private String baseUrlQa;
+    // 业务线ID
+    private int bizId;
 
     public int getId() {
         return id;

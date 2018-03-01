@@ -1,7 +1,9 @@
 package com.tenacity.free.project.manager.po;
 
 
-public class ProjectManagerDataTypeField {
+import com.tenacity.free.object.BaseObject;
+
+public class ProjectManagerDataTypeField extends BaseObject {
 
     private int id;
     // 所属，数据类型ID

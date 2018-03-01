@@ -1,9 +1,11 @@
 package com.tenacity.free.project.manager.po;
 
+import com.tenacity.free.object.BaseObject;
+
 import java.util.Date;
 
 
-public class ProjectManagerDocument {
+public class ProjectManagerDocument extends BaseObject {
 
     // 接口ID
     private int id;

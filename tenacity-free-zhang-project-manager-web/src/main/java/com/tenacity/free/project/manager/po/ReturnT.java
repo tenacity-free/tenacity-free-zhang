@@ -1,9 +1,9 @@
 package com.tenacity.free.project.manager.po;
 
-import java.io.Serializable;
+import com.tenacity.free.object.BaseObject;
 
 
-public class ReturnT<T> implements Serializable {
+public class ReturnT<T> extends BaseObject {
 	public static final long serialVersionUID = 42L;
 
 	public static final int SUCCESS_CODE = 200;

@@ -1,7 +1,9 @@
 package com.tenacity.free.project.manager.po;
 
 
-public class ProjectManagerApiBiz {
+import com.tenacity.free.object.BaseObject;
+
+public class ProjectManagerApiBiz extends BaseObject {
 
     private int id;
     private String bizName;

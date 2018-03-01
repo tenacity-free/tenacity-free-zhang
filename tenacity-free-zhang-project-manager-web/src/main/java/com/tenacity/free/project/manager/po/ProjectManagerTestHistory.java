@@ -1,8 +1,10 @@
 package com.tenacity.free.project.manager.po;
 
+import com.tenacity.free.object.BaseObject;
+
 import java.util.Date;
 
-public class ProjectManagerTestHistory {
+public class ProjectManagerTestHistory extends BaseObject {
 
     private int id;
     // 接口ID

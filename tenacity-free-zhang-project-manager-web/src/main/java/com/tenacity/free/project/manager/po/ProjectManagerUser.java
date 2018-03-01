@@ -1,6 +1,8 @@
 package com.tenacity.free.project.manager.po;
 
-public class ProjectManagerUser {
+import com.tenacity.free.object.BaseObject;
+
+public class ProjectManagerUser extends BaseObject {
 
     // 用户ID
     private int id;

@@ -1,9 +1,11 @@
 package com.tenacity.free.project.manager.po;
 
+import com.tenacity.free.object.BaseObject;
+
 import java.util.List;
 
 
-public class ProjectManagerDataType {
+public class ProjectManagerDataType extends BaseObject {
 
     private int id;
     // 数据类型名称
